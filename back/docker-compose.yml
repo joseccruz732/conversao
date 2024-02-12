@@ -13,4 +13,3 @@ services:
       - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=conversao
 
-  
