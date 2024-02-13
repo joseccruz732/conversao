@@ -1,13 +1,26 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { DataSourceOptions } from 'typeorm';
+
+export const dataSourceOptions: DataSourceOptions = {
+  type: 'postgres',
+  host: 'localhost',
+  port: 5432,
+  username: 'postgres',
+  password: 'postgres',
+  database: 'conversao',
+  entities: [],
+  synchronize: false,
+};
 
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: async (configService: ConfigService) =>
-        configService.get('typeorm'),
+      useFactory: async () => {
+        return {
+          ...dataSourceOptions,
+        };
+      },
     }),
   ],
 })
