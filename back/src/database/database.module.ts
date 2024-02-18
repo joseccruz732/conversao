@@ -1,6 +1,8 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 import { DataSourceOptions } from 'typeorm';
+import { databaseProviders } from 'src/providers/database.provider';
+import { Conversion } from 'src/domain/entities/conversion.entity';
 
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
@@ -8,9 +10,9 @@ export const dataSourceOptions: DataSourceOptions = {
   port: 5432,
   username: 'postgres',
   password: 'postgres',
-  database: 'conversao',
-  entities: [],
-  synchronize: false,
+  //database: 'conversao',
+  entities: [Conversion],
+  synchronize: true,
 };
 
 @Module({
@@ -23,5 +25,7 @@ export const dataSourceOptions: DataSourceOptions = {
       },
     }),
   ],
+  providers: [...databaseProviders],
+  exports: [...databaseProviders],
 })
 export class DatabaseModule {}

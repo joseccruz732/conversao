@@ -2,14 +2,22 @@ version: '3.1'
 
 services:
   db:
-    build: .
-    container_name: conversao-db
+    image: postgres:16
     restart: always
+    # command: postgres -c 'max_connections=450'
+    # shm_size: 1gb
+    # expose:
+    #   - "5432"
     ports:
-      - '5432:5432'
-    volumes:
-      - .docker/dbdata:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=conversao
+      - "5432:5432"
+    # volumes:
+    #   - ./create.sql:/docker-entrypoint-initdb.d/create.sql
 
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: postgres
+    deploy:
+      resources:
+        limits:
+          cpus: "0.4"
+          memory: "1.0GB"

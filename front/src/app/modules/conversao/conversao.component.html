@@ -1,54 +1,19 @@
-<p-card class="tamanho-customizado">
-  <input pInputText placeholder="Username" />
-  <input pInputText placeholder="Username" />
-  <input pInputText placeholder="Username" />
-  <input pInputText placeholder="Username" />
-  <p-button>TESTANDO P BUTTON</p-button>
-  <p>Conteúdo do card.</p>
+<p-card class="centered-card" >
+  <div class="mt-1 flex justify-content-flex-start align-items-flex-start">
+    <form [formGroup]="formGroup">
+      <div class="p-grid mt-12 mb">
+        <div>
+          <input pInputText placeholder="temperatura" formControlName="valorA"  maxlength="4" />
+          <p-dropdown formControlName="temperaturaA" [options]="tableConversion" optionLabel="name" placeholder="Selecione Convers"></p-dropdown>
+        </div>
+
+        <div>
+          <input pInputText placeholder="temperatura" formControlName="valorB" readonly/>
+          <p-dropdown formControlName="temperaturaB" [options]="tableConversion" optionLabel="name" placeholder="Selecione Convers"></p-dropdown>
+        </div>
+
+        <p-button (onClick)="conversao()" [disabled]="!formGroup.valid || formGroup.get('temperaturaA')!.value==formGroup.get('temperaturaB')!.value">Conversão</p-button>
+      </div>
+    </form>
+  </div>
 </p-card>
-
-<p-dropdown>
-  DROP DOWN
-</p-dropdown>
-
-<p-inputGroup>
-  <p-inputGroupAddon>
-      <i class="pi pi-user"></i>
-  </p-inputGroupAddon>
-  <input pInputText placeholder="Username" />
-</p-inputGroup>
-
-
-<!-- <div class="grid">
-  <div class="col-12">
-    <p-card styleClass="mt-10" header="TEMPERATURA">
-
-
-    <div
-      class="flex justify-content-center align-content-center text-align-center">
-          <form [formGroup]="formularioTemperatura" (ngSubmit)="onSubmitTemperatura()">
-
-              <div class="flex justify-content-center align-content-center text-align-center mt-5" >
-                <input type="number" pInputText placeholder="digite a temperatura" formControlName="temperatura1"/>
-                <input type="text" pInputText formControlName="temperatura1" />
-              </div>
-
-              <div class="flex justify-content-center align-content-center text-align-center mt-5" >
-
-              <input type="text" pInputText formControlName="temperatura1" />
-            </div>
-
-              <div class="flex justify-content-center align-content-center text-align-center mt-5">
-                <input type="number" pInputText placeholder="digite a " formControlName="temperatura2" readonly/>
-              </div>
-          </form>
-
-    </div>
-  </p-card>
-
-
-    </div>
-</div>  -->
-
-
-
