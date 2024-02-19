@@ -1,0 +1,19 @@
+<p-card class="centered-card" >
+  <div class="mt-1 flex justify-content-flex-start align-items-flex-start">
+    <form [formGroup]="formGroup">
+      <div class="p-grid mt-12 mb">
+        <div>
+          <input pInputText placeholder="temperatura" formControlName="valorA"  maxlength="4" />
+          <p-dropdown formControlName="temperaturaA" [options]="tableConversion" optionLabel="name" placeholder="Selecione Convers"></p-dropdown>
+        </div>
+
+        <div>
+          <input pInputText placeholder="temperatura" formControlName="valorB" readonly/>
+          <p-dropdown formControlName="temperaturaB" [options]="tableConversion" optionLabel="name" placeholder="Selecione Convers"></p-dropdown>
+        </div>
+
+        <p-button (onClick)="conversao()" [disabled]="!formGroup.valid || formGroup.get('temperaturaA')!.value==formGroup.get('temperaturaB')!.value">Conversão</p-button>
+      </div>
+    </form>
+  </div>
+</p-card>

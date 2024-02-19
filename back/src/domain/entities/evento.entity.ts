@@ -6,26 +6,17 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('calculos')
-export class Calculo {
+@Entity()
+export class Evento {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  valor: number;
-
-  @Column()
-  tipo_medida_1: string;
-
-  @Column()
-  tipo_medida_2: string;
-
-  @Column()
-  result: number;
+  @Column('json')
+  metadata: object;
 
   @CreateDateColumn({ type: 'timestamp' })
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
-  updated_at: Date;
+  updatedAt: Date;
 }

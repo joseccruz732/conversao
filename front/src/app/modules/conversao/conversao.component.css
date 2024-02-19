@@ -1,0 +1,9 @@
+/* Adicione esta classe para centralizar o p-card */
+.centered-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+ /* height: 100vh;  Isso centraliza verticalmente na altura da viewport, opcional */
+}
+
